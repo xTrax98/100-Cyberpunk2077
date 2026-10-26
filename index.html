@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081016">
+  <title>Cyberpunk 2077 — Guía interactiva 100% · 2.5 + Phantom Liberty</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #081016;
+      --panel: #101c24;
+      --panel2: #14232d;
+      --ink: #ecf4f5;
+      --muted: #a6bac1;
+      --yellow: #f5d94e;
+      --cyan: #61e8dc;
+      --pink: #ff5d91;
+      --line: #29404b;
+      --good: #85e6a5;
+      --shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 0%, rgba(52, 110, 126, .18), transparent 35rem),
+        radial-gradient(ellipse at 0% 30%, rgba(126, 37, 78, .13), transparent 34rem),
+        var(--bg);
+      color: var(--ink);
+      font: 16px/1.62 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    a { color: var(--cyan); text-underline-offset: 3px; }
+    a:hover { color: var(--yellow); }
+    .wrap { width: min(1120px, calc(100% - 34px)); margin: auto; }
+    .hero { padding: 56px 0 30px; }
+    .eyebrow { color: var(--yellow); font-size: .78rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 8px 0 12px; max-width: 850px; font-size: clamp(2.2rem, 6vw, 4.7rem); line-height: .99; letter-spacing: -.045em; }
+    h1 span { color: var(--yellow); }
+    h2 { font-size: clamp(1.45rem, 3vw, 2.15rem); line-height: 1.12; margin: 0 0 16px; }
+    h3 { font-size: 1.16rem; margin: 0 0 8px; }
+    p { margin: 8px 0 14px; }
+    .lede { color: #cfdee1; max-width: 800px; font-size: 1.12rem; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 21px; }
+    .pill { padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; color: #dce9ea; background: rgba(12,25,32,.72); font-size: .86rem; }
+    .notice { border-left: 4px solid var(--yellow); background: rgba(245,217,78,.08); border-radius: 0 12px 12px 0; padding: 13px 16px; color: #f0eac6; margin: 18px 0; }
+    .progress-card { background: linear-gradient(110deg, #172831, #102029); padding: 18px 20px; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+    .progress-head { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 10px; }
+    .progress-head strong { font-size: 1.05rem; }
+    #progressText { color: var(--cyan); font-weight: 800; font-variant-numeric: tabular-nums; }
+    progress { display: block; width: 100%; height: 14px; appearance: none; border: 0; border-radius: 999px; overflow: hidden; background: #253943; }
+    progress::-webkit-progress-bar { background: #253943; border-radius: 999px; }
+    progress::-webkit-progress-value { background: linear-gradient(90deg, var(--cyan), var(--yellow)); border-radius: 999px; transition: width .25s ease; }
+    progress::-moz-progress-bar { background: linear-gradient(90deg, var(--cyan), var(--yellow)); border-radius: 999px; }
+    .progress-foot { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: .83rem; margin-top: 8px; }
+    button, .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid #45616b; border-radius: 9px; padding: 8px 12px;
+      color: var(--ink); background: #192b35; cursor: pointer; font: inherit;
+      text-decoration: none; transition: .15s ease;
+    }
+    button:hover, .button:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
+    .reset { font-size: .82rem; padding: 6px 10px; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 38px; }
+    nav a { text-decoration: none; color: #dce9ea; background: #14232d; border: 1px solid var(--line); padding: 7px 11px; border-radius: 8px; font-size: .9rem; }
+    nav a:hover { color: var(--yellow); border-color: var(--yellow); }
+    section { padding: 28px 0; border-top: 1px solid rgba(82,120,133,.28); scroll-margin-top: 20px; }
+    .section-intro { color: var(--muted); max-width: 850px; margin-top: -7px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .card { background: linear-gradient(145deg, rgba(20,35,45,.94), rgba(13,26,34,.96)); border: 1px solid var(--line); border-radius: 15px; padding: 17px; box-shadow: var(--shadow); }
+    .card p:last-child { margin-bottom: 0; }
+    .checklist { list-style: none; padding: 0; margin: 10px 0 0; }
+    .checklist li { padding: 10px 0; border-top: 1px solid rgba(82,120,133,.24); }
+    .checklist li:first-child { border-top: 0; }
+    .task { display: grid; grid-template-columns: 22px 1fr auto; align-items: start; gap: 10px; }
+    .task input { accent-color: var(--cyan); width: 18px; height: 18px; margin: 4px 0 0; cursor: pointer; }
+    .task label { cursor: pointer; }
+    .status { color: #95abb2; font-size: .76rem; white-space: nowrap; padding-top: 2px; }
+    li.done label { color: #9ab0b5; text-decoration: line-through; text-decoration-color: #57747c; }
+    li.done .status { color: var(--good); }
+    .region { color: var(--yellow); font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; margin: 4px 0 2px; }
+    .mapbox { background: #0a141a; border: 1px solid var(--line); padding: 12px; border-radius: 13px; overflow: hidden; }
+    figure { margin: 16px 0; }
+    figure img { width: 100%; height: auto; display: block; border-radius: 9px; background: #111d24; }
+    figcaption { color: var(--muted); font-size: .83rem; padding: 8px 2px 0; }
+    .screenshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 14px; }
+    .screenshot-card { background: linear-gradient(145deg, rgba(20,35,45,.94), rgba(13,26,34,.96)); border: 1px solid var(--line); border-radius: 13px; padding: 12px; }
+    .screenshot-card figure { margin: 0; }
+    .screenshot-card img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .source-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .mini { font-size: .83rem; color: var(--muted); }
+    .map-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 17px; align-items: start; }
+    .number { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: var(--yellow); color: #111820; font-weight: 900; font-size: .78rem; margin-right: 6px; }
+    .legend-row { display: flex; align-items: start; margin: 9px 0; color: #dce8e9; }
+    .branch { border-left: 3px solid var(--pink); padding: 10px 14px; margin: 10px 0; background: rgba(255,93,145,.07); border-radius: 0 10px 10px 0; }
+    .branch strong { color: #ffb1c8; }
+    .minor-table { width: 100%; border-collapse: collapse; font-size: .91rem; margin-top: 12px; }
+    .minor-table th, .minor-table td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+    .minor-table th { color: var(--yellow); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .minor-table td:first-child { white-space: nowrap; color: var(--cyan); font-weight: 700; }
+    .small-note { color: var(--muted); font-size: .85rem; }
+    .source-list li { margin: 8px 0; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 45px; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 760px) {
+      .hero { padding-top: 36px; }
+      .grid, .grid.three, .map-grid, .screenshot-grid { grid-template-columns: 1fr; }
+      .task { grid-template-columns: 22px 1fr; }
+      .status { grid-column: 2; padding-top: 0; }
+      .minor-table { font-size: .84rem; }
+      .minor-table th, .minor-table td { padding: 8px 5px; }
+      .progress-head { align-items: flex-start; flex-direction: column; }
+    }
+    @media print {
+      :root { color-scheme: light; --ink: #172127; --muted: #45575d; --line: #bac7cb; }
+      body { background: white; color: #172127; }
+      .card, .progress-card { box-shadow: none; background: white; }
+      nav, button, .button, .status { display: none; }
+      a { color: #075c64; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap hero">
+    <div class="eyebrow">Night City · Ruta de compleción</div>
+    <h1>Cyberpunk 2077<br><span>Guía interactiva al 100%</span></h1>
+    <p class="lede">Ruta cronológica para una partida nueva, desde crear a V y elegir trasfondo hasta completar Night City, Dogtown y todos los finales de Phantom Liberty.</p>
+    <div class="meta-row">
+      <span class="pill">Actualización 2.5</span>
+      <span class="pill">Phantom Liberty incluido</span>
+      <span class="pill">Empieza desde partida nueva · progreso guardado en este navegador</span>
+      <span class="pill">Spoilers en la sección de finales</span>
+    </div>
+    <div class="notice"><strong>Empieza aquí:</strong> crea a V y elige cualquiera de los tres trasfondos. La guía comienza con el prólogo y te acompaña en orden hasta el 100%; la barra parte de 0%.</div>
+    <div class="progress-card" aria-live="polite">
+      <div class="progress-head"><strong>Progreso de esta guía</strong><span id="progressText">0 / 0 tareas · 0%</span><button class="reset" id="resetProgress" type="button">Borrar marcas</button></div>
+      <progress id="progressBar" value="0" max="100">0%</progress>
+      <div class="progress-foot"><span>Las casillas se guardan automáticamente en este navegador.</span><span id="doneText">0 completadas</span></div>
+    </div>
+    <nav aria-label="Secciones de la guía">
+      <a href="#inicio">Nueva partida</a><a href="#konpeki">Konpeki Plaza</a><a href="#ruta">Ruta general</a><a href="#mapa">Mapas y ubicaciones</a>
+      <a href="#distritos">Distritos</a><a href="#coleccionables">Coleccionables</a><a href="#phantom">Phantom Liberty</a>
+      <a href="#finales">Finales</a><a href="#logros">Logros restantes</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="inicio">
+      <h2>0. Nueva partida: creación de V y prólogo</h2>
+      <p class="section-intro">Haz esta lista desde el menú de inicio. Nomad, Street Kid y Corpo convergen en la misma historia; elige el que te apetezca. No hace falta una partida distinta por trasfondo para completar los logros.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="region">Creación de personaje</div>
+          <h3>Prepara una sola partida completa</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="n1" type="checkbox" data-task><label for="n1">Crea a V y elige Nomad, Street Kid o Corpo (cualquiera sirve).</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="n2" type="checkbox" data-task><label for="n2">Escoge el aspecto y la dificultad que prefieras; no hay logro ligado a la dificultad.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="n3" type="checkbox" data-task><label for="n3">Durante el juego, elige diez respuestas marcadas con el trasfondo de V para Stanislavski’s Method.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="region">Prólogo y Acto I</div>
+          <h3>Sigue la historia hasta Konpeki Plaza</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="n4" type="checkbox" data-task><label for="n4">Completa el prólogo de tu trasfondo, el tutorial y «The Rescue».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="n5" type="checkbox" data-task><label for="n5">Completa «The Ripperdoc», «The Ride», «The Pickup» y «The Information».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="n6" type="checkbox" data-task><label for="n6">Antes de entrar al Delamain rumbo al hotel, crea un guardado manual.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="n7" type="checkbox" data-task><label for="n7">En «The Heist», recoge los objetos de Konpeki que aparecen en la sección siguiente.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+      </div>
+      <div class="notice">Durante el prólogo algunas zonas tienen acceso limitado. Es normal: la exploración libre y la limpieza del mapa se abren al avanzar la historia hasta el Acto II.</div>
+    </section>
+
+    <section id="konpeki">
+      <h2>1. «The Heist»: recoge el botín de Konpeki Plaza</h2>
+      <p class="section-intro">Después de la escena de Yorinobu y Saburo, antes de escapar del hotel, haz esta vuelta para recoger los objetos únicos y de colección.</p>
+      <div class="map-grid">
+        <div class="mapbox">
+          <svg viewBox="0 0 760 430" role="img" aria-labelledby="konpekiTitle konpekiDesc" xmlns="http://www.w3.org/2000/svg">
+            <title id="konpekiTitle">Esquema de objetos de Konpeki Plaza</title>
+            <desc id="konpekiDesc">Esquema orientativo del ático y la azotea. No está a escala. Indica el arma Kongou, el huevo de iguana, el cuerpo de Saburo y la katana Satori.</desc>
+            <rect width="760" height="430" rx="18" fill="#0d1920"/>
+            <text x="28" y="40" fill="#f5d94e" font-size="20" font-weight="800">ÁTICO DE YORINOBU · esquema, no a escala</text>
+            <rect x="32" y="66" width="465" height="318" rx="12" fill="#142631" stroke="#46636d" stroke-width="2"/>
+            <rect x="57" y="98" width="176" height="104" rx="8" fill="#1d3440" stroke="#49636b"/>
+            <text x="74" y="128" fill="#dce9ea" font-size="16">Dormitorio</text>
+            <text x="74" y="153" fill="#a6bac1" font-size="13">mesilla junto a la cama</text>
+            <circle cx="214" cy="122" r="17" fill="#f5d94e"/><text x="209" y="128" fill="#101820" font-size="16" font-weight="900">1</text>
+            <rect x="275" y="96" width="181" height="110" rx="8" fill="#1d3440" stroke="#49636b"/>
+            <text x="292" y="128" fill="#dce9ea" font-size="16">Salón / terrario</text>
+            <text x="292" y="153" fill="#a6bac1" font-size="13">huevo tras el tronco</text>
+            <circle cx="433" cy="123" r="17" fill="#f5d94e"/><text x="428" y="129" fill="#101820" font-size="16" font-weight="900">2</text>
+            <rect x="57" y="231" width="399" height="122" rx="8" fill="#1d3440" stroke="#49636b"/>
+            <text x="75" y="264" fill="#dce9ea" font-size="16">Después de la escena: saquea a Saburo</text>
+            <text x="75" y="291" fill="#a6bac1" font-size="13">Nehan (cuchillo icónico) y dog tags</text>
+            <circle cx="433" cy="262" r="17" fill="#f5d94e"/><text x="428" y="268" fill="#101820" font-size="16" font-weight="900">3</text>
+            <path d="M525 220 H713" stroke="#61e8dc" stroke-width="3" stroke-dasharray="8 7"/>
+            <path d="M699 210 L718 220 L699 230" fill="none" stroke="#61e8dc" stroke-width="3"/>
+            <text x="540" y="194" fill="#61e8dc" font-size="14" font-weight="700">sube por las escaleras</text>
+            <rect x="525" y="66" width="203" height="318" rx="12" fill="#142631" stroke="#46636d" stroke-width="2"/>
+            <text x="545" y="100" fill="#f5d94e" font-size="17" font-weight="800">AZOTEA</text>
+            <text x="545" y="136" fill="#dce9ea" font-size="15">AV de Saburo</text>
+            <text x="545" y="162" fill="#a6bac1" font-size="13">busca dentro del vehículo</text>
+            <circle cx="687" cy="133" r="18" fill="#f5d94e"/><text x="682" y="139" fill="#101820" font-size="16" font-weight="900">4</text>
+            <text x="545" y="206" fill="#ecf4f5" font-size="14">Satori · katana icónica</text>
+            <text x="545" y="260" fill="#a6bac1" font-size="12">No bajes por la salida de escape</text>
+            <text x="545" y="279" fill="#a6bac1" font-size="12">hasta haber saqueado el AV.</text>
+            <text x="32" y="414" fill="#a6bac1" font-size="12">La distribución es orientativa; usa el marcador y la ruta de la misión para orientarte.</text>
+          </svg>
+        </div>
+        <div class="card">
+          <h3>Lista rápida de Konpeki</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="k1" type="checkbox" data-task><label for="k1"><span class="number">1</span><strong>Kongou:</strong> en la mesilla junto a la cama de Yorinobu.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="k2" type="checkbox" data-task><label for="k2"><span class="number">2</span><strong>Huevo de iguana:</strong> detrás del tronco del terrario.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="k3" type="checkbox" data-task><label for="k3"><span class="number">3</span><strong>Nehan y dog tags:</strong> saquea el cuerpo de Saburo después de la escena.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="k4" type="checkbox" data-task><label for="k4"><span class="number">4</span><strong>Satori:</strong> sube a la azotea y busca dentro del AV de Saburo antes de bajar.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+          <p class="small-note">Si ya te alejaste del cuerpo o bajaste de la azotea, sigue con la historia. Phantom Liberty incorpora un vendedor que puede recuperar algunos icónicos perdidos, pero recogerlos ahora es la opción más segura.</p>
+          <div class="source-row"><a class="button" href="https://questcompendium.com/guides/cyberpunk-2077/konpeki-plaza/" target="_blank" rel="noopener">Ver guía visual de Konpeki</a></div>
+        </div>
+      </div>
+      <h3>Capturas de las ubicaciones dentro del juego</h3>
+      <p class="small-note">Son capturas publicadas por guías de Cyberpunk 2077. Al estar alojadas en otras webs, necesitas conexión a internet para que aparezcan.</p>
+      <div class="screenshot-grid">
+        <article class="screenshot-card">
+          <figure>
+            <a href="https://playerassist.com/cyberpunk-2077-how-to-get-iconic-kongou-pistol/" target="_blank" rel="noopener">
+              <img src="https://i0.wp.com/playerassist.com/wp-content/uploads/2020/12/weapon-location-kongou.jpg?ssl=1" alt="Captura de Cyberpunk 2077: la pistola Kongou en la mesilla del dormitorio de Yorinobu" loading="lazy">
+            </a>
+            <figcaption><strong>1 · Kongou:</strong> en la mesilla junto a la cama de Yorinobu. <a href="https://playerassist.com/cyberpunk-2077-how-to-get-iconic-kongou-pistol/" target="_blank" rel="noopener">Fuente de la captura</a>.</figcaption>
+          </figure>
+        </article>
+        <article class="screenshot-card">
+          <figure>
+            <a href="https://thenerdstash.com/how-to-get-the-pet-iguana-in-cyberpunk-2077/" target="_blank" rel="noopener">
+              <img src="https://image.thenerdstash.com/2023/01/Cyberpunk-2077-Iguana-Egg-Location.jpg" alt="Captura de Cyberpunk 2077: el huevo de iguana detrás del tronco del terrario" loading="lazy">
+            </a>
+            <figcaption><strong>2 · Huevo de iguana:</strong> busca detrás del tronco del terrario. <a href="https://thenerdstash.com/how-to-get-the-pet-iguana-in-cyberpunk-2077/" target="_blank" rel="noopener">Fuente de la captura</a>.</figcaption>
+          </figure>
+        </article>
+        <article class="screenshot-card">
+          <figure>
+            <a href="https://primagames.com/TIPS/HOW-TO-GET-ALL-MISSABLE-ITEMS-DURING-THE-HEIST-IN-CYBERPUNK-2077" target="_blank" rel="noopener">
+              <img src="https://primagames.com/wp-content/uploads/2023/09/dad-body.jpg?fit=300%2C169&amp;w=640" alt="Captura de Cyberpunk 2077: el cuerpo de Saburo en el ático, donde se recoge Nehan y las dog tags" loading="lazy">
+            </a>
+            <figcaption><strong>3 · Nehan y dog tags:</strong> saquea el cuerpo de Saburo después de la escena. <a href="https://primagames.com/TIPS/HOW-TO-GET-ALL-MISSABLE-ITEMS-DURING-THE-HEIST-IN-CYBERPUNK-2077" target="_blank" rel="noopener">Fuente de la captura</a>.</figcaption>
+          </figure>
+        </article>
+        <article class="screenshot-card">
+          <figure>
+            <a href="https://primagames.com/TIPS/HOW-TO-GET-ALL-MISSABLE-ITEMS-DURING-THE-HEIST-IN-CYBERPUNK-2077" target="_blank" rel="noopener">
+              <img src="https://primagames.com/wp-content/uploads/2023/09/plane-with-sword.jpg?fit=300%2C169&amp;w=640" alt="Captura de Cyberpunk 2077: Satori dentro del AV de Saburo en la azotea" loading="lazy">
+            </a>
+            <figcaption><strong>4 · Satori:</strong> dentro del AV de Saburo, en la azotea. <a href="https://primagames.com/TIPS/HOW-TO-GET-ALL-MISSABLE-ITEMS-DURING-THE-HEIST-IN-CYBERPUNK-2077" target="_blank" rel="noopener">Fuente de la captura</a>.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section id="ruta">
+      <h2>2. Orden recomendado para llegar al 100%</h2>
+      <p class="section-intro">Puedes hacer la mayoría del contenido en cualquier orden. La clave es conservar partidas manuales antes de las decisiones grandes y revisar el mapa por zonas.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="region">Etapa A · Después de Konpeki</div>
+          <h3>Abre el mundo y activa el contenido de la 2.5</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="r1" type="checkbox" data-task><label for="r1">Tras «The Heist», completa «Love Like Fire» y «Playing for Time» para abrir la exploración libre.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r3" type="checkbox" data-task><label for="r3">Haz dos encargos de Wakako tras «The Heist» y completa «Clampdown» cuando te escriba.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r4" type="checkbox" data-task><label for="r4">Llega a Street Cred 15 y completa «Welcome to Paradise».</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="region">Etapa B · Acto II</div>
+          <h3>Avanza y limpia contenido al pasar</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="r5" type="checkbox" data-task><label for="r5">Completa las misiones principales hasta «Transmission»; esto abre Phantom Liberty.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r6" type="checkbox" data-task><label for="r6">Salva a Takemura durante «Search and Destroy».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r7" type="checkbox" data-task><label for="r7">Completa las cadenas secundarias de Judy, Panam, River, Kerry, Johnny y Rogue.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r8" type="checkbox" data-task><label for="r8">Haz trabajos secundarios, encargos y actividades del escáner conforme se desbloqueen.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="region">Etapa C · Limpieza</div>
+          <h3>Termina todas las misiones y actividades</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="r9" type="checkbox" data-task><label for="r9">Revisa el diario: no dejes misiones principales o secundarias disponibles pendientes.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r10" type="checkbox" data-task><label for="r10">Completa los encargos de cada fixer y todos los marcadores del escáner policial.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r11" type="checkbox" data-task><label for="r11">Completa los 17 avistamientos de ciberpsicópatas y responde a Regina.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r12" type="checkbox" data-task><label for="r12">Termina los logros de vehículos, combate, ciberware, creación y viaje rápido.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="region">Etapa D · Finales</div>
+          <h3>Guarda antes de cerrar cada rama</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="r13" type="checkbox" data-task><label for="r13">Guarda antes de «Firestarter» para ver las cuatro conclusiones de Phantom Liberty.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="r14" type="checkbox" data-task><label for="r14">Guarda antes de «Nocturne OP55N1» para repetir los finales del juego base.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="mapa">
+      <h2>3. Mapas e imágenes de ubicaciones</h2>
+      <p class="section-intro">Los mapas siguientes localizan coleccionables concretos. Para encargos y actividades del escáner, el mapa interactivo permite activar filtros y consultar capturas por marcador.</p>
+      <div class="source-row">
+        <a class="button" href="https://maps.piggyback.com/cyberpunk-2077" target="_blank" rel="noopener">Abrir mapa interactivo oficial</a>
+        <a class="button" href="https://www.keengamer.com/articles/guides/cyberpunk-2077-all-12-minor-arcana-tarot-card-locations-and-rewards/" target="_blank" rel="noopener">Ver guía con las 12 cartas nuevas</a>
+        <a class="button" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3781543233" target="_blank" rel="noopener">Ver rutas de encargos y NCPD</a>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Los 17 ciberpsicópatas</h3>
+          <figure>
+            <img loading="lazy" src="https://static1-us.millenium.gg/articles/0/21/93/0/%40/207968-carte-cyberpunk-2077-cyberpsychos-orig-2-full-1.jpeg" alt="Mapa anotado de Night City con las 17 ubicaciones de ciberpsicópatas">
+            <figcaption>Mapa con los marcadores de los 17 encuentros del juego base. Fuente: <a href="https://us.millenium.gg/guide/21930.html" target="_blank" rel="noopener">Millenium</a>.</figcaption>
+          </figure>
+          <div class="task"><input id="m1" type="checkbox" data-task><label for="m1">He completado los 17 encuentros y contestado los mensajes de Regina.</label><span class="status">Pendiente</span></div>
+        </article>
+        <article class="card">
+          <h3>Tarot Major Arcana: juego base + Dogtown</h3>
+          <figure>
+            <img loading="lazy" src="https://cdn.mos.cms.futurecdn.net/Sr4yc55WNwddY5MFCfSSRn.jpg" alt="Mapa con los 24 grafitis Major Arcana del juego base y Phantom Liberty">
+            <figcaption>Mapa de los 20 grafitis base y cuatro de Dogtown. Fuente: <a href="https://www.gamesradar.com/cyberpunk-2077-tarot-cards-reward/" target="_blank" rel="noopener">GamesRadar</a>.</figcaption>
+          </figure>
+          <div class="task"><input id="m2" type="checkbox" data-task><label for="m2">He escaneado los 20 grafitis base y he terminado la misión de Misty.</label><span class="status">Pendiente</span></div>
+          <div class="task"><input id="m3" type="checkbox" data-task><label for="m3">He escaneado los cuatro grafitis de Dogtown de «Tomorrow Never Knows».</label><span class="status">Pendiente</span></div>
+        </article>
+        <article class="card">
+          <h3>Dogtown: terminales de Relic</h3>
+          <figure>
+            <img loading="lazy" src="https://img.game8.co/3770036/f729966eb100ed35f0950a269ee343aa.png/show" alt="Mapa numerado con los nueve terminales de datos Militech de Dogtown">
+            <figcaption>Los nueve terminales ocultos de Dogtown; los demás puntos Relic llegan por misiones. Fuente: <a href="https://game8.co/games/Cyber-Punk-2077/archives/Map-Data-Terminals" target="_blank" rel="noopener">Game8</a>.</figcaption>
+          </figure>
+          <div class="task"><input id="m4" type="checkbox" data-task><label for="m4">He encontrado los nueve terminales y desbloqueado todas las ventajas Relic.</label><span class="status">Pendiente</span></div>
+        </article>
+        <article class="card">
+          <h3>Las 12 nuevas cartas Minor Arcana de la 2.5</h3>
+          <p class="small-note">Escanea cualquier mural para activar «You Tell Me». Usa la ruta por terminales de viaje rápido y marca las cartas una por una.</p>
+          <div class="mapbox">
+            <svg viewBox="0 0 600 330" role="img" aria-labelledby="minorTitle minorDesc" xmlns="http://www.w3.org/2000/svg">
+              <title id="minorTitle">Esquema de la ruta de las doce cartas Minor Arcana</title>
+              <desc id="minorDesc">Agrupación de cartas por barrios para hacer una ruta. No está a escala ni muestra posiciones exactas.</desc>
+              <rect width="600" height="330" rx="14" fill="#0d1920"/>
+              <text x="22" y="33" fill="#f5d94e" font-size="17" font-weight="800">RUTA POR ZONAS · esquema, no a escala</text>
+              <path d="M90 90 C210 40 300 60 380 110 S460 220 520 250" fill="none" stroke="#61e8dc" stroke-width="4" stroke-dasharray="7 8"/>
+              <g font-family="system-ui" font-size="12" fill="#eaf3f4">
+                <circle cx="70" cy="87" r="22" fill="#f5d94e"/><text x="62" y="92" fill="#14222a" font-weight="900">1</text><text x="24" y="125">Watson</text>
+                <circle cx="210" cy="74" r="22" fill="#f5d94e"/><text x="202" y="79" fill="#14222a" font-weight="900">2</text><text x="166" y="112">Westbrook</text>
+                <circle cx="340" cy="91" r="22" fill="#f5d94e"/><text x="332" y="96" fill="#14222a" font-weight="900">3</text><text x="300" y="129">City Center</text>
+                <circle cx="410" cy="166" r="22" fill="#f5d94e"/><text x="402" y="171" fill="#14222a" font-weight="900">4</text><text x="373" y="204">Heywood</text>
+                <circle cx="520" cy="247" r="22" fill="#ff5d91"/><text x="512" y="252" fill="#14222a" font-weight="900">7</text><text x="477" y="285">Badlands</text>
+                <text x="32" y="180" fill="#a6bac1">1 mural</text><text x="171" y="156" fill="#a6bac1">2 murales</text>
+                <text x="303" y="170" fill="#a6bac1">1 mural</text><text x="380" y="235" fill="#a6bac1">1 mural</text>
+                <text x="22" y="315" fill="#a6bac1" font-size="11">Agrupación aproximada por distrito; consulta la tabla para el punto exacto.</text>
+              </g>
+            </svg>
+          </div>
+          <div class="table-wrap">
+            <table class="minor-table">
+              <thead><tr><th>Carta / zona</th><th>Cómo encontrarla</th><th>✓</th></tr></thead>
+              <tbody>
+                <tr><td>Queen of Swords<br><span class="small-note">Watson · Charter St.</span></td><td>Pared trasera del edificio de Judy.</td><td><input id="a1" type="checkbox" data-task aria-label="Queen of Swords completada"></td></tr>
+                <tr><td>Page of Swords<br><span class="small-note">Westbrook · Megabuilding H8</span></td><td>Piso 12, en la esquina opuesta al ascensor y cerca de Clouds.</td><td><input id="a2" type="checkbox" data-task aria-label="Page of Swords completada"></td></tr>
+                <tr><td>Queen of Pentacles<br><span class="small-note">Westbrook · Casa de Kerry</span></td><td>Pared exterior de la residencia; rodea hacia el noroeste.</td><td><input id="a3" type="checkbox" data-task aria-label="Queen of Pentacles completada"></td></tr>
+                <tr><td>Page of Pentacles<br><span class="small-note">City Center · Corporation St.</span></td><td>Esquina del edificio al lado del aparcamiento y las vallas publicitarias.</td><td><input id="a4" type="checkbox" data-task aria-label="Page of Pentacles completada"></td></tr>
+                <tr><td>Page of Cups<br><span class="small-note">Heywood · Hanford Overpass</span></td><td>Pared exterior junto a la entrada trasera de Chubby Buffalo’s Bar-B-Q.</td><td><input id="a5" type="checkbox" data-task aria-label="Page of Cups completada"></td></tr>
+                <tr><td>Knight of Pentacles<br><span class="small-note">Badlands · Sunset Motel</span></td><td>Rocas junto a la carretera, al sur del Trailer Park.</td><td><input id="a6" type="checkbox" data-task aria-label="Knight of Pentacles completada"></td></tr>
+                <tr><td>Queen of Cups<br><span class="small-note">Badlands · Trailer Park</span></td><td>Pared trasera de la casa de River Ward.</td><td><input id="a7" type="checkbox" data-task aria-label="Queen of Cups completada"></td></tr>
+                <tr><td>Queen of Wands<br><span class="small-note">Badlands · Rocky Ridge</span></td><td>Pared exterior del garaje abandonado al oeste de Edgewood Farm.</td><td><input id="a8" type="checkbox" data-task aria-label="Queen of Wands completada"></td></tr>
+                <tr><td>Knight of Cups<br><span class="small-note">Badlands · Edgewood Farm</span></td><td>Pared trasera de la granja; rodea la casa.</td><td><input id="a9" type="checkbox" data-task aria-label="Knight of Cups completada"></td></tr>
+                <tr><td>Knight of Wands<br><span class="small-note">Badlands · Wraith Camp</span></td><td>Escalera interior de la estación de control ferroviario, al sureste de Edgewood Farm.</td><td><input id="a10" type="checkbox" data-task aria-label="Knight of Wands completada"></td></tr>
+                <tr><td>Page of Wands<br><span class="small-note">Badlands · Nomad Camp</span></td><td>Pared exterior del edificio de comunicaciones del campamento.</td><td><input id="a11" type="checkbox" data-task aria-label="Page of Wands completada"></td></tr>
+                <tr><td>Knight of Swords<br><span class="small-note">Badlands · Lake Farm</span></td><td>Pared exterior de la casa junto al lago.</td><td><input id="a12" type="checkbox" data-task aria-label="Knight of Swords completada"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small-note">La tabla se basa en la <a href="https://www.keengamer.com/articles/guides/cyberpunk-2077-all-12-minor-arcana-tarot-card-locations-and-rewards/" target="_blank" rel="noopener">guía de ubicaciones de Keengamer</a>; el mapa del juego permite filtrar por tarot.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="distritos">
+      <h2>4. Encargos y escáner policial por distrito</h2>
+      <p class="section-intro">En cada distrito, activa los filtros de encargos y actividades del escáner NCPD en el mapa del juego. Los delitos con contenedor de seguimiento no cuentan hasta recoger la prueba final.</p>
+      <div class="grid three">
+        <article class="card"><div class="region">Watson</div><ul class="checklist"><li><div class="task"><input id="d1" type="checkbox" data-task><label for="d1">Todos los encargos de Regina y todos los marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Westbrook</div><ul class="checklist"><li><div class="task"><input id="d2" type="checkbox" data-task><label for="d2">Todos los encargos de Wakako/Rogue y marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">City Center</div><ul class="checklist"><li><div class="task"><input id="d3" type="checkbox" data-task><label for="d3">Todos los encargos de Dino y marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Heywood</div><ul class="checklist"><li><div class="task"><input id="d4" type="checkbox" data-task><label for="d4">Todos los encargos de Padre/Rogue y marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Santo Domingo</div><ul class="checklist"><li><div class="task"><input id="d5" type="checkbox" data-task><label for="d5">Todos los encargos de El Capitán y marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Pacifica</div><ul class="checklist"><li><div class="task"><input id="d6" type="checkbox" data-task><label for="d6">Todos los encargos de Mr. Hands y marcadores NCPD del distrito.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Badlands</div><ul class="checklist"><li><div class="task"><input id="d7" type="checkbox" data-task><label for="d7">Todos los encargos de Dakota y marcadores NCPD.</label><span class="status">Pendiente</span></div></li></ul></article>
+        <article class="card"><div class="region">Todas las zonas</div><ul class="checklist"><li><div class="task"><input id="d8" type="checkbox" data-task><label for="d8">He vuelto a ampliar el mapa y no quedan iconos de encargos ni del escáner.</label><span class="status">Pendiente</span></div></li></ul></article>
+      </div>
+      <div class="notice">Los fixers desbloquean encargos por tandas. Si ya no ves iconos, completa la tanda, responde sus mensajes y vuelve a revisar el mapa después de avanzar o esperar algo de tiempo dentro del juego.</div>
+    </section>
+
+    <section id="coleccionables">
+      <h2>5. Coleccionables y logros del juego base</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Objetos de Johnny</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="j1" type="checkbox" data-task><label for="j1">Camiseta, gafas, chaqueta Samurai y Malorian Arms 3516 durante la historia y «Chippin’ In».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j2" type="checkbox" data-task><label for="j2">Pantalones de Johnny en «Psychofan» (Heywood), en una maleta de la habitación.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j3" type="checkbox" data-task><label for="j3">Zapatos de Johnny en «Family Heirloom» (Westbrook), en la taquilla del objetivo.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+          <p class="small-note">Los pantalones son el objeto más fácil de perder: saquea la maleta antes de completar «Psychofan».</p>
+        </article>
+        <article class="card">
+          <h3>Revisión de logros y mundo</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="j4" type="checkbox" data-task><label for="j4">Street Cred al máximo y una habilidad al nivel máximo.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j5" type="checkbox" data-task><label for="j5">Compra todos los vehículos que aparecen en Autofixer.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j6" type="checkbox" data-task><label for="j6">Descubre todos los terminales de viaje rápido, también los de Dogtown.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j7" type="checkbox" data-task><label for="j7">Instala ciberware en todos los sistemas y partes del cuerpo.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j8" type="checkbox" data-task><label for="j8">Termina los logros de armas, hackeos, fabricación y combate que falten.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="phantom">
+      <h2>6. Phantom Liberty: lista de limpieza</h2>
+      <p class="section-intro">La expansión se abre después de «Transmission». Puedes terminarla antes del final principal. Busca los terminales y actividades de Dogtown mientras avanzas, porque algunas ubicaciones quedan dentro de zonas de misión.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Historia, encargos y actividades</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="p1" type="checkbox" data-task><label for="p1">Completa la historia hasta rescatar a Myers y derrota al Chimera.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p2" type="checkbox" data-task><label for="p2">Completa los nueve encargos de Dogtown y «Run This Town».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p3" type="checkbox" data-task><label for="p3">Derrota a los tres jefes de Increased Criminal Activity.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p4" type="checkbox" data-task><label for="p4">Consigue cinco estrellas de búsqueda dentro de Dogtown.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p5" type="checkbox" data-task><label for="p5">Roba el camión médico de Arasaka o entrega diez vehículos a El Capitán.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Relic y Dogtown</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="p6" type="checkbox" data-task><label for="p6">Reúne los 15 puntos Relic (seis de historia y nueve terminales ocultos).</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p7" type="checkbox" data-task><label for="p7">Compra todas las ventajas de Relic para Relic Ruler.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p8" type="checkbox" data-task><label for="p8">Termina los trabajos secundarios de Dogtown, incluidos los que aparecen tras llamadas.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="p9" type="checkbox" data-task><label for="p9">Consigue las cuatro cartas de tarot de Dogtown.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="finales">
+      <h2>7. Finales (spoilers)</h2>
+      <p class="section-intro">Usa las partidas manuales de «Firestarter» y «Nocturne OP55N1». Al terminar un final, el juego permite continuar antes de la misión final para volver a intentarlo.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Phantom Liberty — cuatro decisiones de Songbird</h3>
+          <div class="branch"><strong>Ayudar a Songbird en «Firestarter»</strong><br>En «The Killing Moon», envíala a las estrellas: King of Wands. Carga la partida y entrégasela a Reed: King of Swords.</div>
+          <div class="branch"><strong>Ayudar a Reed en «Firestarter»</strong><br>En «Somewhat Damaged», cumple la petición de Songbird: King of Cups. Carga antes de esa conversación, perdónala y entrégasela a Reed: King of Pentacles.</div>
+          <div class="task"><input id="e1" type="checkbox" data-task><label for="e1">He conseguido King of Wands, King of Swords, King of Cups y King of Pentacles.</label><span class="status">Pendiente</span></div>
+          <div class="task"><input id="e2" type="checkbox" data-task><label for="e2">Tras entregar a Songbird viva, he completado el seguimiento de Reed para The Tower.</label><span class="status">Pendiente</span></div>
+        </article>
+        <article class="card">
+          <h3>Juego base — finales y ruta secreta</h3>
+          <ul class="checklist">
+            <li><div class="task"><input id="e3" type="checkbox" data-task><label for="e3">The Devil: salva a Takemura y acepta la opción de Hanako.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="e4" type="checkbox" data-task><label for="e4">The Star: completa la cadena de Panam y elige su ayuda.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="e5" type="checkbox" data-task><label for="e5">The Sun: completa la ruta de Rogue o la ruta secreta y deja el cuerpo a V.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="e6" type="checkbox" data-task><label for="e6">Temperance: completa una ruta compatible y deja el cuerpo a Johnny.</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="e7" type="checkbox" data-task><label for="e7">Ruta secreta: en «Chippin’ In», elige las respuestas indicadas en la guía de abajo.</label><span class="status">Pendiente</span></div></li>
+          </ul>
+          <p class="small-note"><a href="https://www.powerpyx.com/cyberpunk-2077-chippin-in-walkthrough/" target="_blank" rel="noopener">Ver respuestas de «Chippin’ In» para activar la ruta secreta</a>.</p>
+        </article>
+      </div>
+      <div class="notice"><strong>Consejo:</strong> las cuatro rutas de Songbird son mutuamente excluyentes en una partida normal; carga el guardado de «Firestarter» para conseguir las restantes. Guarda por separado si quieres conservar recompensas distintas.</div>
+    </section>
+
+    <section id="logros">
+      <h2>8. Último repaso de logros</h2>
+      <div class="grid three">
+        <article class="card"><h3>Base</h3><p>Historia, los siete trofeos por distrito, ciberpsicópatas, personajes, tarot, objetos de Johnny, vehículos, Street Cred y actividades de combate.</p><div class="task"><input id="l1" type="checkbox" data-task><label for="l1">He revisado mi lista de logros base y no queda ninguno bloqueado.</label><span class="status">Pendiente</span></div></article>
+        <article class="card"><h3>Phantom Liberty</h3><p>13 logros: historia, Chimera, encargos de Dogtown, Relic, actividades, vehículo y las cuatro decisiones de Songbird más The Tower.</p><div class="task"><input id="l2" type="checkbox" data-task><label for="l2">He revisado mi lista de logros de Phantom Liberty y no queda ninguno bloqueado.</label><span class="status">Pendiente</span></div></article>
+        <article class="card"><h3>Contenido cosmético opcional</h3><p>Para una colección más amplia, visita los Glamdocs y vendedores de ropa añadidos en la 2.5; no hace falta comprar cada estilo para los logros.</p><div class="task"><input id="l3" type="checkbox" data-task><label for="l3">Opcional: he visitado los Glamdocs y revisado los conjuntos de ropa nuevos.</label><span class="status">Pendiente</span></div></article>
+      </div>
+    </section>
+
+    <section id="fuentes">
+      <h2>Mapas y referencias</h2>
+      <ul class="source-list">
+        <li><a href="https://maps.piggyback.com/cyberpunk-2077" target="_blank" rel="noopener">Mapa interactivo oficial de Cyberpunk 2077</a> — filtros, seguimiento y capturas para explorar ubicaciones.</li>
+        <li><a href="https://www.cyberpunk.net/en/news/52120/check-out-whats-coming-to-night-city-in-the-edgerunners-2-update-for-cyberpunk-2077/" target="_blank" rel="noopener">Notas oficiales de la actualización 2.5</a> — misiones, cartas y contenido de la actualización.</li>
+        <li><a href="https://www.keengamer.com/articles/guides/cyberpunk-2077-all-12-minor-arcana-tarot-card-locations-and-rewards/" target="_blank" rel="noopener">Ubicaciones de las 12 Minor Arcana</a> — ruta y punto de viaje rápido de cada mural.</li>
+        <li><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3781543233" target="_blank" rel="noopener">Guía de logros y rutas de actividades</a> — checklist de mapa por distritos.</li>
+        <li><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3060201765" target="_blank" rel="noopener">Guía de logros de Phantom Liberty</a> — decisiones y rutas de los cuatro finales de Songbird.</li>
+      </ul>
+      <p class="small-note">Las imágenes externas necesitan conexión a internet. Las casillas y el progreso de esta guía funcionan localmente en el navegador; no se envía ni sincroniza información.</p>
+    </section>
+  </main>
+  <footer><div class="wrap">Guía personal de seguimiento para Cyberpunk 2077 2.5 + Phantom Liberty. Pulsa «Borrar marcas» arriba si quieres empezar de nuevo. Puedes imprimir esta página desde el navegador.</div></footer>
+  <script>
+    (function () {
+      var storageKey = "cp2077-25-pl-guide-new-game-v2";
+      var boxes = Array.prototype.slice.call(document.querySelectorAll("input[data-task]"));
+      var bar = document.getElementById("progressBar");
+      var progressText = document.getElementById("progressText");
+      var doneText = document.getElementById("doneText");
+
+      function update() {
+        var done = 0;
+        boxes.forEach(function (box) {
+          var row = box.closest("li") || box.closest(".task");
+          if (box.checked) {
+            done += 1;
+            if (row) row.classList.add("done");
+          } else if (row) {
+            row.classList.remove("done");
+          }
+          var status = row ? row.querySelector(".status") : null;
+          if (status) status.textContent = box.checked ? "Hecho" : "Pendiente";
+        });
+        var percent = boxes.length ? Math.round(done * 100 / boxes.length) : 0;
+        bar.max = boxes.length || 1;
+        bar.value = done;
+        bar.setAttribute("aria-label", "Progreso " + percent + " por ciento");
+        progressText.textContent = done + " / " + boxes.length + " tareas · " + percent + "%";
+        doneText.textContent = done + (done === 1 ? " completada" : " completadas");
+        var state = {};
+        boxes.forEach(function (box) { state[box.id] = box.checked; });
+        try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (e) {}
+      }
+
+      try {
+        var saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        boxes.forEach(function (box) {
+          if (Object.prototype.hasOwnProperty.call(saved, box.id)) box.checked = !!saved[box.id];
+        });
+      } catch (e) {}
+
+      boxes.forEach(function (box) { box.addEventListener("change", update); });
+      document.getElementById("resetProgress").addEventListener("click", function () {
+        if (!window.confirm("¿Borrar todas las marcas y reiniciar el progreso?")) return;
+        boxes.forEach(function (box) { box.checked = false; });
+        update();
+      });
+      update();
+    }());
+  </script>
+</body>
+</html>
