@@ -101,6 +101,22 @@
     .minor-table th { color: var(--yellow); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
     .minor-table td:first-child { white-space: nowrap; color: var(--cyan); font-weight: 700; }
     .small-note { color: var(--muted); font-size: .85rem; }
+    .weapon-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+    .weapon-toolbar input, .weapon-toolbar select { min-width: 220px; flex: 1; border: 1px solid #45616b; border-radius: 9px; padding: 10px 12px; color: var(--ink); background: #102029; font: inherit; }
+    .weapon-progress { margin: 16px 0; }
+    .weapon-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .weapon-card { background: linear-gradient(145deg, rgba(20,35,45,.94), rgba(13,26,34,.96)); border: 1px solid var(--line); border-radius: 13px; padding: 14px; }
+    .weapon-card h3 { color: var(--cyan); margin: 0 0 6px; }
+    .weapon-meta { color: var(--yellow); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .weapon-card p { margin: 7px 0; }
+    .weapon-check { display: flex; gap: 9px; align-items: flex-start; margin: 10px 0; }
+    .weapon-check input { accent-color: var(--cyan); width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
+    .weapon-check label { cursor: pointer; }
+    .weapon-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .weapon-links a { font-size: .82rem; }
+    .weapon-card.weapon-done { border-color: rgba(133,230,165,.65); }
+    #weaponCount { color: var(--cyan); font-weight: 800; }
+    @media (max-width: 760px) { .weapon-grid { grid-template-columns: 1fr; } }
     .source-list li { margin: 8px 0; }
     footer { border-top: 1px solid var(--line); padding: 24px 0 45px; color: var(--muted); font-size: .88rem; }
     @media (max-width: 760px) {
@@ -141,7 +157,7 @@
     </div>
     <nav aria-label="Secciones de la guía">
       <a href="#inicio">Nueva partida</a><a href="#konpeki">Konpeki Plaza</a><a href="#ruta">Ruta general</a><a href="#mapa">Mapas y ubicaciones</a>
-      <a href="#distritos">Distritos</a><a href="#coleccionables">Coleccionables</a><a href="#phantom">Phantom Liberty</a>
+      <a href="#distritos">Distritos</a><a href="#coleccionables">Coleccionables</a><a href="#armas">Armas emblemáticas</a><a href="#phantom">Phantom Liberty</a>
       <a href="#finales">Finales</a><a href="#logros">Logros restantes</a>
     </nav>
   </header>
@@ -407,7 +423,7 @@
         <article class="card">
           <h3>Objetos de Johnny</h3>
           <ul class="checklist">
-            <li><div class="task"><input id="j1" type="checkbox" data-task><label for="j1">Camiseta, gafas, chaqueta Samurai y Malorian Arms 3516 durante la historia y «Chippin’ In».</label><span class="status">Pendiente</span></div></li>
+            <li><div class="task"><input id="j1" type="checkbox" data-task><label for="j1">Objetos de Johnny para el logro de colección: camiseta, gafas, chaqueta Samurai y Malorian Arms 3516. La pistola se recoge junto a Grayson en los muelles del Ebunike durante «Chippin’ In».</label><span class="status">Pendiente</span></div></li>
             <li><div class="task"><input id="j2" type="checkbox" data-task><label for="j2">Pantalones de Johnny en «Psicofan» (Heywood), en una maleta de la habitación.</label><span class="status">Pendiente</span></div></li>
             <li><div class="task"><input id="j3" type="checkbox" data-task><label for="j3">Zapatos de Johnny en «Reliquia familiar» (Westbrook), en la taquilla del objetivo.</label><span class="status">Pendiente</span></div></li>
           </ul>
@@ -426,8 +442,31 @@
       </div>
     </section>
 
+    <section id="armas">
+      <h2>6. Colección opcional: armas emblemáticas y únicas</h2>
+      <p class="section-intro">Esta lista reúne las armas emblemáticas del juego base, Phantom Liberty y las armas únicas añadidas en la actualización 2.5. No necesitas recogerlas todas para el 100% de logros o trofeos: es una meta opcional de coleccionista. Las casillas tienen su propio progreso y no alteran la barra principal de logros.</p>
+      <article class="card">
+        <h3>Arma concreta que cuenta para un logro</h3>
+        <p>Para el logro de reunir los objetos de Johnny Silverhand («Breathtaking»), consigue la <strong>Malorian Arms 3516</strong>. Se recoge en los <strong>muelles del Ebunike, en Northside (Watson)</strong>, durante el curro secundario <strong>«Chippin’ In»</strong>: tras el encuentro con Grayson, recoge la pistola de Johnny que queda junto a él. Es uno de los seis objetos de Johnny que pide el logro; el Porsche no cuenta. <a href="https://vandal.elespanol.com/guias/guia-cyberpunk-2077-trucos-consejos-y-secretos/chippin-in" target="_blank" rel="noopener">Ver guía en español con la ruta</a>.</p>
+        <p>Los demás logros de combate no exigen una marca de arma: valen cualquier pistola o revólver para los tiros a corta distancia, cualquier revólver para disparar a una granada, cualquier rifle de precisión para el doble abatimiento y cualquier arma a distancia o cuerpo a cuerpo para acumular bajas. Puedes comprar armas normales a vendedores o conseguirlas como botín. El logro de fabricación tampoco exige un arma: pide crear tres objetos legendarios. <strong>No hace falta completar la colección opcional de 116 armas para el 100% de logros.</strong></p>
+      </article>
+      <div class="notice"><strong>Ojo con las perdibles:</strong> las que dicen «recógela durante la misión» conviene saquearlas antes de abandonar la zona. Si ya cerraste una misión, pregunta al vendedor negro Herold en el estadio de Dogtown: recupera muchas armas emblemáticas que dejaste atrás, pero no las de zonas a las que nunca accediste ni objetos de áreas que siguen abiertas. Las recompensas promocionales o ligadas a cuentas aparecen separadas de las armas con ubicación física.</div>
+      <div class="progress-card weapon-progress" aria-live="polite">
+        <div class="progress-head"><strong>Progreso de colección de armas</strong><span id="weaponCount">0 / 0 · 0%</span><button class="reset" id="resetWeapons" type="button">Borrar marcas de armas</button></div>
+        <progress id="weaponBar" value="0" max="100">0%</progress>
+        <div class="progress-foot"><span>Se guarda en este navegador, separado de la barra principal.</span><span id="weaponDoneText">0 recogidas</span></div>
+      </div>
+      <div class="weapon-toolbar">
+        <input id="weaponSearch" type="search" placeholder="Buscar arma, distrito o misión…" aria-label="Buscar arma por nombre, ubicación o misión">
+        <select id="weaponFilter" aria-label="Filtrar armas"><option value="all">Todas las armas</option><option value="risk">Perdibles o con decisión</option><option value="base">Juego base</option><option value="pl">Phantom Liberty / Dogtown</option><option value="new">Actualización 2.5</option><option value="account">Recompensas de cuenta</option></select>
+      </div>
+      <p class="small-note">El registro incluye 116 armas emblemáticas o únicas, no cada variante común de botín: 113 del catálogo anterior a 2.5 y tres añadidas en esa actualización (Coronation, Sihil y Boar Carver). El progreso cuenta 115 obtenibles; Yasha fue una promoción de Twitch caducada y solo se puede marcar manualmente si ya estaba reclamada en tu cuenta. Cada enlace «Mapa interactivo» abre un mapa donde puedes activar los filtros de armas emblemáticas; «Fotos: mapa + juego» lleva a guías visuales con capturas de las ubicaciones. Para las armas del paquete de Ariadne, el mapa señala el apartamento de V en Megabuilding H10 y la guía muestra la recompensa; si no salta al arma concreta, usa Ctrl+F y busca su nombre.</p>
+      <div id="weaponList" class="weapon-grid" aria-live="polite"></div>
+      <noscript><p class="notice">Activa JavaScript en el navegador para ver la lista interactiva de armas.</p></noscript>
+    </section>
+
     <section id="phantom">
-      <h2>6. Phantom Liberty: lista de limpieza</h2>
+      <h2>7. Phantom Liberty: lista de limpieza</h2>
       <p class="section-intro">La expansión se abre después de «Un millón de años luz». Puedes terminarla antes del final principal. Busca los terminales y actividades de Dogtown mientras avanzas, porque algunas ubicaciones quedan dentro de zonas de misión.</p>
       <div class="grid">
         <article class="card">
@@ -453,7 +492,7 @@
     </section>
 
     <section id="finales">
-      <h2>7. Finales (spoilers)</h2>
+      <h2>8. Finales (spoilers)</h2>
       <p class="section-intro">Usa las partidas manuales de «Pirómanos» y «Nocturno Op. 55 n.º 1». Al terminar un final, el juego permite continuar antes de la misión final para volver a intentarlo.</p>
       <div class="grid">
         <article class="card">
@@ -479,7 +518,7 @@
     </section>
 
     <section id="logros">
-      <h2>8. Último repaso de logros</h2>
+      <h2>9. Último repaso de logros</h2>
       <div class="grid three">
         <article class="card"><h3>Base</h3><p>Historia, los siete trofeos por distrito, ciberpsicópatas, personajes, tarot, objetos de Johnny, vehículos, Reputación y actividades de combate.</p><div class="task"><input id="l1" type="checkbox" data-task><label for="l1">He revisado mi lista de logros base y no queda ninguno bloqueado.</label><span class="status">Pendiente</span></div></article>
         <article class="card"><h3>Phantom Liberty</h3><p>13 logros: historia, Chimera, encargos de Dogtown, Relic, actividades, vehículo y las cuatro decisiones de Songbird más La Torre.</p><div class="task"><input id="l2" type="checkbox" data-task><label for="l2">He revisado mi lista de logros de Phantom Liberty y no queda ninguno bloqueado.</label><span class="status">Pendiente</span></div></article>
@@ -491,6 +530,15 @@
       <h2>Mapas y referencias</h2>
       <ul class="source-list">
         <li><a href="https://maps.piggyback.com/cyberpunk-2077" target="_blank" rel="noopener">Mapa interactivo oficial de Cyberpunk 2077</a> — filtros, seguimiento y capturas para explorar ubicaciones.</li>
+        <li><a href="https://gamestegy.com/cyberpunk-2077/maps/night-city" target="_blank" rel="noopener">Mapa con filtros de armas emblemáticas</a> — activa los filtros de armas de fuego, cuerpo a cuerpo y planos.</li>
+        <li><a href="https://vulkk.com/2025/05/29/cyberpunk-2077-iconic-weapons-list-and-locations-base-game/" target="_blank" rel="noopener">Guía visual de armas emblemáticas del juego base</a> — ubicaciones, capturas in-game y mapas.</li>
+        <li><a href="https://vulkk.com/2023/09/26/all-new-iconic-items-in-cyberpunk-2077-phantom-liberty/" target="_blank" rel="noopener">Guía visual de armas emblemáticas de Phantom Liberty</a> — ubicaciones, capturas y decisiones de ruta.</li>
+        <li><a href="https://www.pcgamer.com/games/rpg/cyberpunk-2077-king-outfit-clampdown-edgerunners/" target="_blank" rel="noopener">Guía de «Me sueltan mañana» (Clampdown) y Coronation</a> — requisitos y bolsa de la prisión.</li>
+        <li><a href="https://www.gamesradar.com/games/cyberpunk/cyberpunk-2077-ariadne/" target="_blank" rel="noopener">Guía ilustrada del paquete de Ariadne</a> — captura in-game de la caja junto a la entrada del apartamento y lista de las dos armas.</li>
+        <li><a href="https://itemlevel.net/cyberpunk-2077-all-new-outfits-witcher-sword-sihil-how-to-get-them-in-update-2-5/" target="_blank" rel="noopener">Guía complementaria de las armas de la actualización 2.5</a> — Sihil, Boar Carver y Coronation.</li>
+        <li><a href="https://steamcommunity.com/stats/1091500/achievements" target="_blank" rel="noopener">Lista de logros de Steam</a> — los logros piden acciones y armas concretas para combatir, no la colección completa de emblemáticas.</li>
+        <li><a href="https://vandal.elespanol.com/guias/guia-cyberpunk-2077-trucos-consejos-y-secretos/chippin-in" target="_blank" rel="noopener">Ubicación de Malorian Arms 3516 en «Chippin’ In»</a> — guía en español del encuentro en los muelles del Ebunike.</li>
+        <li><a href="https://www.powerpyx.com/cyberpunk-2077-all-johnny-silverhand-collectibles-locations/" target="_blank" rel="noopener">Lista de los objetos de Johnny para «Breathtaking»</a> — distingue los seis necesarios del Porsche, que es opcional.</li>
         <li><a href="https://www.cyberpunk.net/index.php/es/news/52135/echa-un-vistazo-a-lo-que-va-a-llegar-a-night-city-en-la-actualizacion-edgerunners-2-para-cyberpunk-2077" target="_blank" rel="noopener">Notas oficiales en español de la actualización 2.5</a> — nombres de las misiones nuevas y cambios del tarot.</li>
         <li><a href="https://vandal.elespanol.com/guias/guia-cyberpunk-2077-trucos-consejos-y-secretos" target="_blank" rel="noopener">Guía de misiones de Vandal</a> — nombres españoles de los curros principales.</li>
         <li><a href="https://www.keengamer.com/articles/guides/cyberpunk-2077-all-12-minor-arcana-tarot-card-locations-and-rewards/" target="_blank" rel="noopener">Ubicaciones de las 12 cartas de arcanos menores</a> — ruta y punto de viaje rápido de cada mural.</li>
@@ -504,6 +552,214 @@
   <script>
     (function () {
       var storageKey = "cp2077-25-pl-guide-new-game-v2";
+      var weaponStorageKey = "cp2077-25-pl-iconic-weapons-v1";
+      var baseGuide = "https://vulkk.com/2025/05/29/cyberpunk-2077-iconic-weapons-list-and-locations-base-game/";
+      var plGuide = "https://vulkk.com/2023/09/26/all-new-iconic-items-in-cyberpunk-2077-phantom-liberty/";
+      var new25Guide = "https://www.gamesradar.com/games/cyberpunk/cyberpunk-2077-ariadne/";
+      var coronationGuide = "https://www.pcgamer.com/games/rpg/cyberpunk-2077-king-outfit-clampdown-edgerunners/";
+      var weaponMap = "https://gamestegy.com/cyberpunk-2077/maps/night-city";
+      /* Registro de iconicas del juego base, Phantom Liberty y la mision 2.5.
+         La ultima columna separa las recompensas ligadas a cuenta; Yasha es una recompensa Twitch caducada. */
+      var weaponData = [
+        ["Achilles x-MOD2","Rifle de precisión (Tech)","Dogtown: sala oculta junto a una pasarela elevada cerca del estadio.","Explorando Dogtown; no depende de una misión concreta.","pl",false],
+        ["Agaou","Hacha arrojadiza","Dogtown: jefe del evento de actividad criminal en el balneario Luxor High Wellness.","Después de derrotar al jefe del evento.","pl",false],
+        ["Alabai","Escopeta (Power)","Dogtown: alijo especial en lo alto de una torre de construcción sin terminar, accesible por la grúa de la historia.","Durante la exploración; el alijo especial se genera por progreso de historia.","pl",false],
+        ["Ambition","Pistola (Tech)","Dogtown: recompensa de Hasan tras el encargo «Prototipo en el desguace» y el trabajo posterior.","PERDIBLE: en «Vete por tu cuenta», salva a Hasan y no lo entregues a Zetatech.","pl",true],
+        ["Amnesty","Revólver (Power)","Badlands: campamento Aldecaldo, en el reto de tiro de Cassidy.","PERDIBLE: solo durante la ruta final de Panam; gana el reto antes de seguir con el asalto.","base",true],
+        ["Amstaff","Escopeta (Power)","Dogtown: recompensa del tercer alijo especial de suministro repetible.","Disponible con nivel 41 o superior; completa varios alijos hasta el tercero.","pl",false],
+        ["Apparition","Pistola (Tech)","Encargo «Cerdos de guerra»: saquea el cuerpo de Frank Nostra.","PERDIBLE por trasfondo: el encargo aparece si V es Corpo. Si no, mira a Herold tras el encargo.","base",true],
+        ["Archangel","Revólver (Power)","Recompensa de Kerry tras el concierto de Samurai.","Después del concierto, al avanzar la cadena de Kerry.","base",false],
+        ["Ba Xing Chong","Escopeta (Smart)","Nave Ebunike: plano en la sala cerrada detrás del escritorio.","Después del final: necesitas la tarjeta de acceso de Adam Smasher y fabricar el arma.","base",false],
+        ["Baby Boomer","Garrote a dos manos","Dogtown: recepción del Brainporium, como regalo de Lina Malina.","PERDIBLE por decisión en «Aturdido y confuso»: depende de cómo resuelvas la historia de Tool.","pl",true],
+        ["Bald Eagle","Revólver (Power)","Dogtown: cuerpo de Kurt Hansen en el estadio o fuera del laboratorio de Songbird.","Durante «Pirómanos»: si ayudas a Reed, saquea a Hansen en el estadio; si ayudas a Songbird, busca su cuerpo fuera del laboratorio.","pl",true],
+        ["Baseball Bat x-MOD2","Garrote a dos manos","Dogtown: caja en la pasarela elevada frente al club Heavy Hearts.","Disponible al explorar; junto a un terminal Relic.","pl",false],
+        ["BFC 9000","Garrote a una mano","Santo Domingo: al pie de un AV estrellado en el acantilado junto a la presa Petrochem.","Activa la opción de desnudez; si el AV no aparece, vuelve más tarde.","base",false],
+        ["Black Unicorn","Katana","Alijo del apartamento, en las recompensas de cuenta de CD PROJEKT RED.","No tiene ubicación física. Reclámala/vincula la cuenta desde MY REWARDS.","account",false],
+        ["Bloody Maria","Escopeta (Power)","Recompensa de El Capitán por completar todos sus encargos en Santo Domingo.","Después de completar la cadena de encargos del fixer.","base",false],
+        ["Blue Fang","Cuchillo arrojadizo","Vendedora de armas cuerpo a cuerpo en una caravana de Badlands, al este de las granjas proteicas.","Disponible en tienda al explorar Badlands.","base",false],
+        ["Borzaya","Rifle de francotirador (Power)","Dogtown: caja amarilla de suministro especial en la obra entre Slider’s Base y Black Sapphire.","Al explorar; alijo especial de caída aérea, su ubicación no es un drop normal.","pl",false],
+        ["Breakthrough","Rifle de francotirador (Tech)","Rancho Coronado: plano en el cuerpo del mini jefe del marcador NCPD junto a la subestación.","Disponible al completar la actividad NCPD y fabricar el arma.","base",false],
+        ["Butcher’s Cleaver","Cuchillo","Pacifica: sobre el mostrador de la carnicería de Placide.","PERDIBLE: durante «M’ap Tann Pèlen», recógelo antes de salir de la tienda.","base",true],
+        ["Buzzsaw","Subfusil (Power)","Northside, Watson: plano en el cuerpo del mini jefe de la actividad NCPD tras el ripperdoc.","Disponible tras completar esa actividad NCPD y fabricar el arma.","base",false],
+        ["Byakko","Katana","Recompensa de Wakako por completar todos sus encargos en Westbrook.","Después de terminar los encargos del fixer; llega al alijo.","base",false],
+        ["Caretaker’s Spade","Martillo","Torre Arasaka: vegetación al lado de la sala de reunión en una ruta del final.","PERDIBLE: durante el final de Rogue, antes de avanzar más allá del punto de no retorno.","base",true],
+        ["Carmen","Fusil de asalto (Power)","Dogtown: regalo en la tienda de campaña de Paco y Babs tras su misión secundaria.","PERDIBLE por decisión: ayúdalos con su plan y asegúrate de que ambos sobreviven.","pl",true],
+        ["Catahoula","Pistola (Tech)","Dogtown: quinto alijo de suministro especial repetible.","Disponible desde nivel 41; sigue completando alijos de caída aérea.","pl",false],
+        ["Chaos","Pistola (Tech)","All Foods: saquea a Royce durante «El encargo».","PERDIBLE por decisiones: debe morir Royce y debes saquearlo antes de abandonar la fábrica.","base",true],
+        ["Cheetah","Pistola (Power)","Dogtown: cuerpo de Angie Whelan en Terra Cognita.","PERDIBLE: en «No hay salida fácil», rechaza el trato de Angie y saquea su cuerpo.","pl",true],
+        ["Chesapeake","Subfusil (Smart)","Dogtown: primer alijo de suministro especial repetible.","Disponible desde nivel 41; recoge el primero de la serie.","pl",false],
+        ["Chinook","Fusil de asalto (Power)","Dogtown: cuarto alijo de suministro especial repetible.","Disponible desde nivel 41; sigue completando alijos de caída aérea.","pl",false],
+        ["Claw x-MOD2","Hacha arrojadiza","Dogtown: en la cima de la pirámide de cristal del club Heavy Hearts.","Disponible al explorar; escala por las estructuras cercanas.","pl",false],
+        ["Cocktail Stick","Katana","Clouds, planta VIP: tocador del vestuario junto a la chaqueta de Evelyn.","PERDIBLE: durante «Amor automático», recógela antes de salir de Clouds.","base",true],
+        ["Comrade’s Hammer","Revólver (Tech)","Arroyo, Santo Domingo: plano en el mini jefe de la actividad NCPD junto al bar Red Dirt.","Disponible al completar esa actividad NCPD y fabricar el arma.","base",false],
+        ["Cottonmouth","Garrote a una mano","Jig-Jig Street: dormitorio de Fingers, sobre una mesa.","PERDIBLE: durante «El espacio entre», antes de salir de la clínica.","base",true],
+        ["Crash","Revólver (Power)","Regalo de River al final de su cadena de trabajos secundarios.","Después de completar la historia de River y mantener buena relación con él.","base",false],
+        ["Crimestopper","Pistola (Smart)","Dogtown: maletín de la cabina VIP 6 del club Heavy Hearts.","PERDIBLE: durante el encargo «Heaviest of Hearts», saquea la cabina antes de salir.","pl",true],
+        ["Crowbar","Garrote a una mano","Cynosure: caja junto al camión MaxTac accidentado, tras una puerta de Fuerza.","PERDIBLE por ruta: ayuda a Reed en «Pirómanos» y recógela al inicio de «El límite», antes de bajar al abismo.","pl",true],
+        ["Cut-o-Matic x-MOD2","Motosierra","Dogtown, parque Terra Cognita: extremo sur del mapa, junto a la zona del transbordador espacial.","Disponible al explorar; está clavada en un objeto en el barranco.","pl",false],
+        ["Death and Taxes","Pistola (Power)","Clouds: sobre una silla en el despacho de Maiko.","PERDIBLE: durante «Ex-Factor», saquea la oficina antes de abandonar el edificio.","base",true],
+        ["Dezerter","Escopeta de doble cañón (Power)","Dogtown: garaje/casa de Leon Rinder, a las afueras de Terra Cognita.","PERDIBLE por decisión: perdona a Rinder en «El hombre que mató a Jason Foreman» y recoge el regalo después.","pl",true],
+        ["Divided We Stand","Fusil de asalto (Smart)","Rancho Coronado: fiesta de los 6th Street junto al ripperdoc.","PERDIBLE: gana su concurso de tiro; también puedes obtenerla saqueando a la banda.","base",true],
+        ["Doom Doom","Revólver (Power)","Watson: cuerpo de Dum Dum en el encargo posterior a «El encargo».","PERDIBLE: Dum Dum debe sobrevivir a «El encargo»; saquea su cuerpo en la misión posterior.","base",true],
+        ["Dying Night","Pistola (Power)","Tienda de Wilson, Megabuilding H10.","Al inicio del juego: completa el trabajo «La pistola» y recoge el arma gratis de Wilson.","base",false],
+        ["Erebus","Subfusil (Power)","Cynosure: componente de fabricación en una zona cerrada de la misión de escape.","PERDIBLE por ruta: ayuda a Reed en «Pirómanos»; saquea el componente durante «El límite» y fabrícala.","pl",true],
+        ["Errata","Katana térmica","Central eléctrica de Santo Domingo: dentro de un horno en el refugio de Scavs.","Durante «Desastre», o después: el lugar permanece accesible.","base",false],
+        ["Fang","Cuchillo arrojadizo","Dogtown: recompensa automática al derrotar a Kurt Hansen en el estadio.","PERDIBLE por ruta: ayuda a Reed en «Pirómanos»; Fang se añade durante el combate con Hansen.","pl",true],
+        ["Fenrir","Subfusil (Power)","Northside, Watson: mesa médica del escondite Maelstrom junto al muelle.","Durante el trabajo del monje para rescatar a su hermano; el escondite puede visitarse luego.","base",false],
+        ["Foxhound","Rifle de francotirador (Tech)","Dogtown: sexto alijo de suministro especial repetible.","Disponible desde nivel 41; sigue completando alijos de caída aérea.","pl",false],
+        ["Genjiroh","Pistola (Smart)","Edificio de la ruta del desfile de Arasaka: detrás de una puerta cerrada junto a los francotiradores.","PERDIBLE: durante «Juega a lo seguro», código 2906; hay una segunda copia en el final de Hanako.","base",true],
+        ["Gold-Plated Baseball Bat","Garrote a dos manos","Mansión de Denny: junto a la piscina después de la discusión con Henry.","PERDIBLE: durante «Segundo conflicto», recógelo cuando Denny lo deja en el suelo.","base",true],
+        ["Gris-Gris","Revólver (Tech)","Dogtown: trastero cerrado en el escondite de Slider.","PERDIBLE: consigue antes la llave en el encargo «Tratar los síntomas»; úsala durante «Condenado».","pl",true],
+        ["Guillotine x-MOD2","Subfusil (Power)","Dogtown, The Stacks: laboratorio Phant tras una puerta de Fuerza o una ventana.","Disponible al explorar; no requiere cerrar una misión.","pl",false],
+        ["Guts","Escopeta (Power)","Memorial de Arasaka, City Center: entre los arbustos del parque.","Disponible al explorar; no depende de misión.","base",false],
+        ["Gwynbleidd","Espada","Alijo del apartamento, entre las recompensas de cuenta.","Sin ubicación física: requiere tener The Witcher 3 asociado a la cuenta de CD PROJEKT RED.","account",false],
+        ["Hawk","Fusil de asalto (Power)","Dogtown: apartamento de Kress City, donde se refugia Myers.","Cuando Myers se duerma, durante «Nada de nada». Si desaparece, avanza uno o dos trabajos y vuelve a revisar.","pl",false],
+        ["Headhunter","Cuchillo arrojadizo","Pacifica: vendedor de armas cuerpo a cuerpo en West Wind Estate.","Disponible en tienda al explorar Pacifica.","base",false],
+        ["Her Majesty","Pistola (Power)","Casa segura de Alex en Dogtown: maletín de armas.","PERDIBLE: durante «Privilegiados», antes de salir hacia la infiltración.","pl",true],
+        ["Hercules 3AX","Fusil de asalto (Smart)","Dogtown: almacén de armas del estadio EBM Petrochem.","PERDIBLE: durante el encargo «Caminos hacia la redención», saquea el laboratorio antes de salir.","pl",true],
+        ["Hypercritical","Rifle de precisión (Power)","Kabuki, Watson: mostrador del baño en el edificio del encargo de Tiny Mike.","Durante el encargo «Trampa de hormigón»; recoge el arma antes de abandonar el edificio.","base",true],
+        ["Jinchu-maru","Katana","Cuerpo de Oda en el desfile de Arasaka.","PERDIBLE: durante «Juega a lo seguro», saquea a Oda tras derrotarlo.","base",true],
+        ["Kappa x-MOD2","Pistola (Smart)","Dogtown: escondite pequeño al oeste de la cancha de baloncesto, junto a la hoguera nocturna.","Después de los encargos «Espía en la jungla» y «El hombre que mató a Jason Foreman»; puede tardar en aparecer.","pl",false],
+        ["Kongou","Pistola (Power)","Konpeki Plaza: mesilla del dormitorio de Yorinobu.","PERDIBLE: durante «El golpe», antes de salir de la suite.","base",true],
+        ["Kyubi x-MOD2","Fusil de asalto (Power)","Dogtown: fondo de la piscina vacía junto al punto de viaje rápido Golden Pacific.","Disponible al explorar Dogtown; bucea hasta el fondo.","pl",false],
+        ["La Chingona Dorada","Pistolas (Power)","Ofrenda de Jackie en El Coyote Cojo, The Glen, Heywood.","Después del funeral de Jackie; acepta la opción de la ofrenda familiar.","base",false],
+        ["Laika","Revólver (Tech)","Dogtown: alijo especial de caída aérea en el techo de un motel.","Al completar caídas aéreas; si no sale en la primera, sigue abriendo alijos especiales.","pl",false],
+        ["Lexington x-MOD2","Pistola (Power)","Tienda de Wilson en Megabuilding H10, Little China.","PERDIBLE: gana el concurso de tiro cuando Wilson te contacte al inicio.","base",true],
+        ["Lizzie","Pistola (Tech)","Sótano del bar de Lizzie, en la habitación lateral.","Durante «Amor automático»; recógela antes de avanzar por la historia del club.","base",true],
+        ["MA70 HB x-MOD2","Ametralladora ligera (Power)","Dogtown: helicóptero Militech estrellado.","Disponible al explorar; hace falta abrir la puerta con Fuerza.","pl",false],
+        ["Malorian Arms 3516","Pistola (Power)","A bordo del Ebunike: saquea a Grayson.","PERDIBLE: durante «Chippin’ In», recoge el arma antes de abandonar el barco.","base",true],
+        ["Mancinella","Revólver (Power)","Oficina de Mr. Hands en Heavy Hearts, Dogtown.","Durante «Dirige esta ciudad», Hands te la entrega para el disfraz; te la quedas al terminar.","pl",false],
+        ["Moron Labe","Fusil de asalto (Power)","Pacifica: plano en el mini jefe de la alerta NCPD de West Wind Estate.","Disponible tras completar la alerta NCPD y fabricar el arma.","base",false],
+        ["Mox","Escopeta (Power)","Apartamento de Judy: sobre la encimera de la cocina.","Después de su cadena de misiones; mantén buena relación y espera a que se marche o invite a su casa.","base",false],
+        ["Murphy’s Law","Garrote a una mano","Dogtown: cuerpo de Albert Murphy en el estadio EBM Petrochem.","PERDIBLE por ruta: ayuda a Songbird en «Pirómanos»; saquea a Murphy durante la emboscada de vehículos.","pl",true],
+        ["NDI Osprey","Rifle de francotirador (Power)","Dogtown: estuche cerrado en la armería de la casa segura.","PERDIBLE: durante «Alas de algodón», revisa la armería antes de salir.","pl",true],
+        ["Nehan","Cuchillo arrojadizo","Konpeki Plaza: cuerpo de Saburo Arasaka en la suite.","PERDIBLE: durante «El golpe», saquea el cuerpo antes de escapar.","base",true],
+        ["O’Five","Rifle de francotirador (Power)","Rancho Coronado: consigue que Buck apueste su rifle en el combate de boxeo.","PERDIBLE por reto: gana a Buck y el combate posterior; insiste en que apueste el arma.","base",true],
+        ["Ogou","Pistola (Smart)","Dogtown: jefe robótico en el sótano del balneario Luxor High Wellness.","Durante el encargo «Tratar los síntomas»; saquea al robot al derrotarlo.","pl",true],
+        ["Ol’ Reliable","Revólver (Power)","Dogtown: cuerpo de Dante en el trabajo «Disparo desde ambos lados».","PERDIBLE por decisión: protege a Bree y pelea con Dante; saquea su cuerpo.","pl",true],
+        ["Order","Escopeta (Tech)","Vendedor negro Herold, estadio EBM Petrochem, Dogtown.","Disponible al acceder a Dogtown; se compra al vendedor, no tiene recogida de misión.","pl",false],
+        ["Overwatch","Rifle de francotirador (Power)","Recompensa de Panam tras ayudar a rescatar a Saul.","Después de «A lomos de la tormenta», habla con Panam y recibe el arma.","base",false],
+        ["Pariah","Pistola (Tech)","Puerto espacial de Night City: cuerpo de Reed junto al transbordador.","PERDIBLE: ayuda a Songbird en «Pirómanos»; al final de «La luna asesina», no la entregues y mata a Reed.","pl",true],
+        ["Pit Bull","Fusil de asalto (Power)","Dogtown: segundo alijo de suministro especial repetible.","Disponible desde nivel 41; sigue completando alijos de caída aérea.","pl",false],
+        ["Pizdets","Subfusil (Smart)","Dogtown: cuerpo de Boris Ribakov en el museo de historia natural.","Durante el encargo «Espía en la jungla»; saquea el cuerpo del jefe.","pl",true],
+        ["Plan B","Pistola (Power)","Vertedero de Badlands: cuerpo de Dex DeShawn.","Disponible después de «El golpe»; vuelve al vertedero y saquea el cadáver.","base",false],
+        ["Pozhar x-MOD2","Escopeta (Power)","Dogtown: fiesta secreta en una grúa elevada.","Disponible solo de madrugada; vuelve entre las 04:00 y las 06:00 del juego.","pl",false],
+        ["Prejudice","Fusil de asalto (Power)","Afterlife/Torre Arasaka: cerca de la morgue al inicio de una ruta final.","PERDIBLE: durante el final de Rogue, recógela antes de avanzar por la misión.","base",true],
+        ["Pride","Pistola (Power)","Torre Arasaka: junto a Rogue después de que caiga en una ruta final.","PERDIBLE: durante el final de Rogue, vuelve al lugar donde cayó antes de seguir.","base",true],
+        ["Problem Solver","Subfusil (Power)","Campamento de los Wraiths en Badlands: saquea al jefe al rescatar a Saul.","PERDIBLE: durante «A lomos de la tormenta», saquea al jefe antes de abandonar el campamento.","base",true],
+        ["Prototype: Shingen Mark V","Subfusil (Smart)","Parque industrial de Arasaka: contenedor explosivo de la zona de los camiones.","Durante la misión en el parque industrial de Arasaka; el almacén sigue accesible después, pero desactiva la trampa con cuidado.","base",false],
+        ["Psalm 11:6","Fusil de asalto (Power)","Northside, Watson: plano en una actividad NCPD de seguimiento.","Disponible tras completar la alerta NCPD y fabricar el arma.","base",false],
+        ["Raiju","Subfusil (Tech)","Túnel de contrabando entre Dogtown y Pacifica, en un alijo cerrado.","Disponible al completar el evento de actividad criminal y vencer al jefe que tiene la llave.","pl",false],
+        ["Rasetsu","Rifle de francotirador (Tech)","Dogtown: nido de francotirador en el edificio de la infiltración.","PERDIBLE: durante «Privilegiados», recógela en la galería antes de seguir.","pl",true],
+        ["Riskit","Pistola (Power)","Dogtown: mesa al final del trabajo «Disparo desde ambos lados».","Durante la decisión final con Bree y Dante; revisa la mesa o el suelo antes de salir.","pl",true],
+        ["Rook","Pistola (Power)","Dogtown: alijo cifrado bajo una rotonda, código 941229.","Después de la misión principal que revela el escondite; vuelve a la rotonda y abre el contenedor.","pl",false],
+        ["Rosco","Revólver (Power)","Comisaría vieja de Pacifica, durante el encargo «Esperando a Dodger».","Después del encuentro con Dodger; puedes saquearlo al final incluso si resolviste el encargo pacíficamente.","pl",false],
+        ["Sasquatch’s Hammer","Martillo","Grand Imperial Mall, Pacifica: arma de Sasquatch.","PERDIBLE: durante «Me colé en la línea», recoge el martillo antes de abandonar el centro comercial.","base",true],
+        ["Satori","Katana","Konpeki Plaza: AV de Saburo en la azotea.","PERDIBLE: durante «El golpe», sube a la azotea y saquea el AV antes de escapar.","base",true],
+        ["Scalpel","Katana","Kabuki, Watson: dentro de una nevera en una caseta junto al agua, en el borde norte del barrio de chabolas.","Después de aceptar el trabajo secundario de entrega del Afterlife y completar la misión.","base",false],
+        ["Scorch","Pistola (Tech)","Alijo del apartamento, entre las recompensas de cuenta.","Sin ubicación física: requiere tener Gwent: The Witcher Card Game asociado a tu cuenta de CD PROJEKT RED.","account",false],
+        ["Seraph","Pistola (Power)","Recompensa de Padre por completar todos sus encargos en Heywood.","Después de completar la cadena de encargos del fixer.","base",false],
+        ["Sir John Phallustiff","Garrote a una mano","No-Tell Motel: sobre la cama de la habitación.","PERDIBLE por decisión: apoya a Meredith en «El encargo»; vuelve tras su mensaje.","base",true],
+        ["Skippy","Pistola (Smart)","Vista del Rey, Heywood: en un callejón junto a un cadáver.","Al explorar; conserva el arma y no la devuelvas a Regina si quieres tenerla en la colección.","base",false],
+        ["Sovereign","Escopeta de doble cañón (Power)","Japantown: plano en la actividad NCPD de un mini jefe Tyger Claws.","Disponible tras completar la alerta NCPD y fabricar el arma.","base",false],
+        ["Sparky","Rifle de francotirador (Power)","Dogtown, Terra Cognita: habitación del segundo piso tras el combate con drones.","Durante el evento de actividad criminal; abre el estuche después de limpiar el lugar.","pl",false],
+        ["Stinger","Cuchillo arrojadizo","Badlands: recuerdo junto al funeral de Andrew.","PERDIBLE: completa la misión secundaria de Mitch antes de avanzar con la siguiente misión importante de los Aldecaldos.","base",true],
+        ["Taigan","Revólver (Power)","Dogtown: alijo especial de suministro en lo alto de una torre.","Al explorar y completar caídas aéreas especiales.","pl",false],
+        ["The Headsman","Escopeta (Power)","North Oak, Westbrook: plano en la actividad NCPD de un mini jefe.","Disponible tras completar la alerta NCPD y fabricar el arma.","base",false],
+        ["Tinker Bell","Garrote a una mano","Granja Edgewood: sala de control durante la investigación de River.","PERDIBLE: durante «La caza», revisa la sala de control antes de abandonar la granja.","base",true],
+        ["Tsumetogi","Katana","Piso de reunión de los Tyger Claws en Japantown.","PERDIBLE: durante «Peces», revisa la mesa de la sala tras la conversación/combate.","base",true],
+        ["Umbra x-MOD2","Fusil de asalto (Power)","Dogtown: cadáver en un rincón detrás de unas rejas, cerca del punto de suministros de Terra Cognita.","Disponible al explorar; acceso por un hueco junto a los cables eléctricos; puede estar bloqueado por una chapa.","pl",false],
+        ["Volkodav","Machete","Comisaría vieja de Pacifica: caja en el almacén del sótano.","PERDIBLE: durante «Esperando a Dodger», recógelo mientras escoltas a Bill y Charles.","pl",true],
+        ["Widow Maker","Rifle de precisión (Tech)","Túnel de Nash en Badlands, durante la cadena de Panam.","PERDIBLE: durante «Ciudad fantasma», saquea a Nash antes de salir del túnel.","base",true],
+        ["Wild Dog","Ametralladora ligera (Power)","Dogtown: cuerpo de Kurt Hansen en el estadio o fuera del laboratorio de Songbird.","Durante «Pirómanos»: si ayudas a Reed, saquea a Hansen en el estadio; si ayudas a Songbird, busca su cuerpo fuera del laboratorio.","pl",true],
+        ["Yasha","Rifle de francotirador (Smart)","Sin ubicación: recompensa de Twitch de 2023.","No se puede reclamar actualmente; solo la conservan las cuentas que la canjearon entonces.","account",false],
+        ["Yinglong","Subfusil (Smart)","Wellsprings, Heywood: plano en el mini jefe de una actividad NCPD.","Disponible tras completar la alerta NCPD y fabricar el arma.","base",false],
+        ["Coronation","Revólver (Tech)","Prisión de Night City: bolsa de deporte en el baño de la cárcel.","NUEVA EN 2.5 · Durante «Me sueltan mañana» (Clampdown), recoge la bolsa antes de terminar la fuga. Se desbloquea tras «El golpe» y dos encargos de Wakako.","new",true],
+        ["Sihil","Espada emblemática","Caja de regalo de Ariadne, a la izquierda de la entrada del apartamento de V, Megabuilding H10, Watson.","NUEVA EN 2.5 · Cuando Ariadne te escriba para ser embajador de la marca, vuelve al apartamento y abre la caja. Si aún no aparece, sigue jugando y espera su mensaje.","new",false],
+        ["Boar Carver","Cuchillo","Caja de regalo de Ariadne, a la izquierda de la entrada del apartamento de V, Megabuilding H10, Watson.","NUEVA EN 2.5 · Está en la misma caja que Sihil. Vuelve al apartamento cuando Ariadne te escriba para ser embajador de la marca; si no aparece, avanza la partida y espera su mensaje.","new",false]
+      ];
+      var weaponState = {};
+      var weaponList = document.getElementById("weaponList");
+      var weaponBoxes = [];
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function (char) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char];
+        });
+      }
+      function guideFor(item) {
+        if (item[0] === "Coronation") return coronationGuide;
+        if (item[4] === "pl") return plGuide;
+        if (item[4] === "new") return new25Guide;
+        return baseGuide;
+      }
+      function guideLinkFor(item) {
+        return guideFor(item) + "#:~:text=" + encodeURIComponent(item[0]);
+      }
+      function labelFor(kind) {
+        if (kind === "pl") return "Phantom Liberty · Dogtown";
+        if (kind === "new") return "Actualización 2.5";
+        if (kind === "account") return "Recompensa de cuenta";
+        return "Juego base";
+      }
+      function renderWeaponCards() {
+        weaponList.innerHTML = weaponData.map(function (item, index) {
+          var id = "weapon-" + index;
+          var isAccount = item[4] === "account";
+          var links = isAccount
+            ? '<span class="mini">Sin ubicación física</span>'
+            : '<a class="button" href="' + weaponMap + '" target="_blank" rel="noopener">' + (item[0] === "Sihil" || item[0] === "Boar Carver" ? "Mapa: apartamento H10" : "Mapa interactivo") + '</a>';
+          var photoLabel = isAccount ? "Ver recompensa" : (item[0] === "Sihil" || item[0] === "Boar Carver" ? "Foto in-game del paquete" : (item[4] === "new" ? "Ver bolsa y misión" : "Fotos: mapa + juego"));
+          links += '<a class="button" href="' + guideLinkFor(item) + '" target="_blank" rel="noopener">' + photoLabel + '</a>';
+          return '<article class="weapon-card' + (weaponState[id] ? ' weapon-done' : '') + '" data-kind="' + item[4] + '" data-risk="' + (item[5] ? '1' : '0') + '" data-search="' + escapeHtml((item[0] + ' ' + item[1] + ' ' + item[2] + ' ' + item[3]).toLowerCase()) + '">' +
+            '<div class="weapon-meta">' + escapeHtml(labelFor(item[4])) + (item[5] ? ' · <span style="color:var(--pink)">Perdible / decisión</span>' : '') + '</div>' +
+            '<h3>' + escapeHtml(item[0]) + '</h3><p class="mini">' + escapeHtml(item[1]) + '</p>' +
+            '<p><strong>Ubicación:</strong> ' + escapeHtml(item[2]) + '</p><p><strong>Cuándo:</strong> ' + escapeHtml(item[3]) + '</p>' +
+            '<div class="weapon-check"><input id="' + id + '" type="checkbox" data-weapon' + (item[0] === "Yasha" ? ' data-countable="false"' : '') + (weaponState[id] ? ' checked' : '') + '><label for="' + id + '">La he recogido / reclamado</label></div>' +
+            '<div class="weapon-links">' + links + '</div></article>';
+        }).join("");
+        weaponBoxes = Array.prototype.slice.call(document.querySelectorAll("input[data-weapon]"));
+        weaponBoxes.forEach(function (box) {
+          box.addEventListener("change", function () {
+            weaponState[box.id] = box.checked;
+            try { localStorage.setItem(weaponStorageKey, JSON.stringify(weaponState)); } catch (e) {}
+            box.closest(".weapon-card").classList.toggle("weapon-done", box.checked);
+            updateWeaponProgress();
+          });
+        });
+        updateWeaponProgress();
+      }
+      function updateWeaponProgress() {
+        var countable = weaponBoxes.filter(function (box) { return box.getAttribute("data-countable") !== "false"; });
+        var done = countable.filter(function (box) { return box.checked; }).length;
+        var percent = countable.length ? Math.round(done * 100 / countable.length) : 0;
+        document.getElementById("weaponBar").max = countable.length || 1;
+        document.getElementById("weaponBar").value = done;
+        document.getElementById("weaponCount").textContent = done + " / " + countable.length + " · " + percent + "%";
+        document.getElementById("weaponDoneText").textContent = done + (done === 1 ? " recogida" : " recogidas");
+      }
+      function applyWeaponFilters() {
+        var filter = document.getElementById("weaponFilter").value;
+        var query = document.getElementById("weaponSearch").value.toLowerCase().trim();
+        Array.prototype.forEach.call(document.querySelectorAll(".weapon-card"), function (card) {
+          var kind = card.getAttribute("data-kind");
+          var show = filter === "all" || (filter === "risk" && card.getAttribute("data-risk") === "1") ||
+            (filter === "account" && kind === "account") || (filter === "pl" && kind === "pl") ||
+            (filter === "base" && kind === "base") || (filter === "new" && kind === "new");
+          card.hidden = !show || (query && card.getAttribute("data-search").indexOf(query) === -1);
+        });
+      }
+      try { weaponState = JSON.parse(localStorage.getItem(weaponStorageKey) || "{}"); } catch (e) { weaponState = {}; }
+      renderWeaponCards();
+      document.getElementById("weaponSearch").addEventListener("input", applyWeaponFilters);
+      document.getElementById("weaponFilter").addEventListener("change", applyWeaponFilters);
+      document.getElementById("resetWeapons").addEventListener("click", function () {
+        if (!window.confirm("¿Borrar todas las marcas de armas emblemáticas?")) return;
+        weaponBoxes.forEach(function (box) { box.checked = false; box.closest(".weapon-card").classList.remove("weapon-done"); });
+        weaponState = {};
+        try { localStorage.removeItem(weaponStorageKey); } catch (e) {}
+        updateWeaponProgress();
+      });
       var boxes = Array.prototype.slice.call(document.querySelectorAll("input[data-task]"));
       var bar = document.getElementById("progressBar");
       var progressText = document.getElementById("progressText");
