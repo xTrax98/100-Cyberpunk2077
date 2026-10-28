@@ -114,6 +114,9 @@
     .weapon-check label { cursor: pointer; }
     .weapon-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .weapon-links a { font-size: .82rem; }
+    .optional-weapon-list { margin: 16px 0; border: 1px solid var(--line); border-radius: 14px; background: rgba(12, 25, 32, .72); }
+    .optional-weapon-list summary { cursor: pointer; padding: 14px 16px; color: var(--cyan); font-weight: 800; }
+    .optional-weapon-content { padding: 0 16px 16px; }
     .weapon-card.weapon-done { border-color: rgba(133,230,165,.65); }
     #weaponCount { color: var(--cyan); font-weight: 800; }
     @media (max-width: 760px) { .weapon-grid { grid-template-columns: 1fr; } }
@@ -157,7 +160,7 @@
     </div>
     <nav aria-label="Secciones de la guía">
       <a href="#inicio">Nueva partida</a><a href="#konpeki">Konpeki Plaza</a><a href="#ruta">Ruta general</a><a href="#mapa">Mapas y ubicaciones</a>
-      <a href="#distritos">Distritos</a><a href="#coleccionables">Coleccionables</a><a href="#armas">Armas emblemáticas</a><a href="#phantom">Phantom Liberty</a>
+      <a href="#distritos">Distritos</a><a href="#coleccionables">Coleccionables</a><a href="#armas">Armas para logros</a><a href="#phantom">Phantom Liberty</a>
       <a href="#finales">Finales</a><a href="#logros">Logros restantes</a>
     </nav>
   </header>
@@ -443,13 +446,16 @@
     </section>
 
     <section id="armas">
-      <h2>6. Colección opcional: armas emblemáticas y únicas</h2>
-      <p class="section-intro">Esta lista reúne las armas emblemáticas del juego base, Phantom Liberty y las armas únicas añadidas en la actualización 2.5. No necesitas recogerlas todas para el 100% de logros o trofeos: es una meta opcional de coleccionista. Las casillas tienen su propio progreso y no alteran la barra principal de logros.</p>
+      <h2>6. Armas emblemáticas para los logros</h2>
+      <p class="section-intro">Para completar los logros/trofeos, solo necesitas una emblemática con nombre propio: la Malorian Arms 3516, que forma parte del logro «Breathtaking». Las demás pruebas de combate aceptan cualquier arma de la categoría indicada. La colección de 116 armas de abajo es opcional.</p>
       <article class="card">
-        <h3>Arma concreta que cuenta para un logro</h3>
+        <h3>Orden de obtención: 1. Malorian Arms 3516</h3>
         <p>Para el logro de reunir los objetos de Johnny Silverhand («Breathtaking»), consigue la <strong>Malorian Arms 3516</strong>. Se recoge en los <strong>muelles del Ebunike, en Northside (Watson)</strong>, durante el curro secundario <strong>«Chippin’ In»</strong>: tras el encuentro con Grayson, recoge la pistola de Johnny que queda junto a él. Es uno de los seis objetos de Johnny que pide el logro; el Porsche no cuenta. <a href="https://vandal.elespanol.com/guias/guia-cyberpunk-2077-trucos-consejos-y-secretos/chippin-in" target="_blank" rel="noopener">Ver guía en español con la ruta</a>.</p>
         <p>Los demás logros de combate no exigen una marca de arma: valen cualquier pistola o revólver para los tiros a corta distancia, cualquier revólver para disparar a una granada, cualquier rifle de precisión para el doble abatimiento y cualquier arma a distancia o cuerpo a cuerpo para acumular bajas. Puedes comprar armas normales a vendedores o conseguirlas como botín. El logro de fabricación tampoco exige un arma: pide crear tres objetos legendarios. <strong>No hace falta completar la colección opcional de 116 armas para el 100% de logros.</strong></p>
       </article>
+      <details class="optional-weapon-list">
+        <summary>Ver colección opcional de 116 armas emblemáticas y únicas</summary>
+        <div class="optional-weapon-content">
       <div class="notice"><strong>Ojo con las perdibles:</strong> las que dicen «recógela durante la misión» conviene saquearlas antes de abandonar la zona. Si ya cerraste una misión, pregunta al vendedor negro Herold en el estadio de Dogtown: recupera muchas armas emblemáticas que dejaste atrás, pero no las de zonas a las que nunca accediste ni objetos de áreas que siguen abiertas. Las recompensas promocionales o ligadas a cuentas aparecen separadas de las armas con ubicación física.</div>
       <div class="progress-card weapon-progress" aria-live="polite">
         <div class="progress-head"><strong>Progreso de colección de armas</strong><span id="weaponCount">0 / 0 · 0%</span><button class="reset" id="resetWeapons" type="button">Borrar marcas de armas</button></div>
@@ -463,6 +469,8 @@
       <p class="small-note">El registro incluye 116 armas emblemáticas o únicas, no cada variante común de botín: 113 del catálogo anterior a 2.5 y tres añadidas en esa actualización (Coronation, Sihil y Boar Carver). El progreso cuenta 115 obtenibles; Yasha fue una promoción de Twitch caducada y solo se puede marcar manualmente si ya estaba reclamada en tu cuenta. Cada enlace «Mapa interactivo» abre un mapa donde puedes activar los filtros de armas emblemáticas; «Fotos: mapa + juego» lleva a guías visuales con capturas de las ubicaciones. Para las armas del paquete de Ariadne, el mapa señala el apartamento de V en Megabuilding H10 y la guía muestra la recompensa; si no salta al arma concreta, usa Ctrl+F y busca su nombre.</p>
       <div id="weaponList" class="weapon-grid" aria-live="polite"></div>
       <noscript><p class="notice">Activa JavaScript en el navegador para ver la lista interactiva de armas.</p></noscript>
+        </div>
+      </details>
     </section>
 
     <section id="phantom">

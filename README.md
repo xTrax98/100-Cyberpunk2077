@@ -14,9 +14,9 @@ Abre `index.html` en un navegador. Las marcas de las casillas se guardan automá
 4. Selecciona la rama `main` y la carpeta `/(root)`, y pulsa **Save**.
 5. Cuando termine la publicación, GitHub mostrará la dirección de la página en esa sección.
 
-## Colección de armas emblemáticas y únicas
+## Armas para logros y colección opcional
 
-La sección de armas reúne 116 armas emblemáticas o únicas del juego base, Phantom Liberty y la actualización 2.5. Es una colección opcional: los logros y trofeos no exigen recogerlas todas. Su progreso tiene una barra y casillas propias, separadas de la lista principal. No incluye cada variante común de botín.
+La sección principal de armas muestra la única emblemática con nombre propio que cuenta para un logro. Debajo hay un catálogo desplegable y opcional de 116 armas emblemáticas o únicas del juego base, Phantom Liberty y la actualización 2.5. No incluye cada variante común de botín.
 
 El progreso cuenta 115 armas obtenibles. La Yasha queda visible como referencia, pero no suma a la barra porque fue una recompensa de Twitch de 2023 que ya no se puede reclamar. Las tres adiciones de la actualización 2.5 son Coronation, Sihil y Boar Carver; las dos últimas están en el paquete que Ariadne deja en el apartamento de V, en Megabuilding H10. Cada entrada indica la zona, si requiere una decisión o una misión y cuándo conviene recogerla. Los enlaces abren un mapa interactivo o guías visuales con capturas; necesitan conexión a internet.
 
